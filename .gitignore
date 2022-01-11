@@ -1,0 +1,41 @@
+# what is the immigration distribution for Denmark, Norway, and Sween for 1980-2013?
+
+df_t = df_can.loc[['Denmark','Norway','Sweden'], years].transpose()
+df_t.head()
+
+#'bin_edges' is a list of bin intervals
+count, bin_edges = np.histogram(df_t, 15)
+
+df_t.plot(kind='hist',
+          figsize=(10,6),
+          bins=15,
+          alpha=0.6,
+          xticks=bin_edges,
+          color=['coral','darkslateblue','mediumseagreen'])
+
+plt.title('Histogram of Immigration')
+plt.ylabel('Number of Countries')
+plt.xlabel('Number of Immigrants')
+
+plt.show()
+
+#use the scripting layer to display, overlap plot with 15 bins and transparency value of 0.35
+
+df_cof = df_can.loc[['Greece', 'Albania', 'Bulgaria'], years]
+
+df_cof = df_cof.transpose()
+
+count, bin_edges = np.histogram(df_cof, 15)
+
+df_cof.plot(kind='hist',
+            figsize=(10,6),
+            bins=15,
+            alpha=0.35,
+            xticks=bin_edges,
+            color=['coral', 'darkslateblue', 'mediumseagreen'])
+
+plt.title('Histogram of Immigration')
+plt.ylabel('Number of Countries')
+plt.xlabel('Number of Immigrants')
+
+plt.show()
